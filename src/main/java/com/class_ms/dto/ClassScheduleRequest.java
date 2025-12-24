@@ -2,7 +2,7 @@ package com.class_ms.dto;
 
 import java.time.LocalTime;
 
-public class classScheduleRequest {
+public class ClassScheduleRequest {
 
     private Integer id;
     private Integer classId;

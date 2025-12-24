@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalTime;
 
-public class classScheduleResponse {
+public class ClassScheduleResponse {
 
     @NotNull
     private Integer classId;

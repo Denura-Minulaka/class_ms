@@ -1,28 +1,28 @@
 package com.class_ms.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+public class ClassResponse {
 
-public class classRequest {
-
-    @NotBlank
+    private Integer id;
     private String className;
-
     private String description;
-
-    @NotBlank
     private String subject;
-
     private String grade;
     private String language;
     private String mode;
     private String district;
     private String town;
-
-    @NotNull
     private Double price;
+    private Integer teacherId;
 
     // Getters and Setters
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getClassName() {
         return className;
@@ -94,5 +94,13 @@ public class classRequest {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 }
