@@ -1,25 +1,24 @@
 package com.class_ms.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalTime;
 
 public class ClassScheduleResponse {
 
-    @NotNull
+    private Integer id;
     private Integer classId;
-
-    @NotBlank
     private String dayOfWeek;
-
-    @NotNull
     private LocalTime startTime;
-
-    @NotNull
     private LocalTime endTime;
 
-    // Getters and Setter
+    // Getters and Setters
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getClassId() {
         return classId;

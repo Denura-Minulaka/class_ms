@@ -13,7 +13,7 @@ public class JwtUtil {
     private final Key key;
 
     public JwtUtil() {
-        String SECRET = "7d9F!2xA@9#LKP0mQwZ8sR1EJfYtU4cB";
+        String SECRET = "7d9F!2xA@9#LkP0mQwZ8sR1EJfYtU4cB";
         this.key = Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
