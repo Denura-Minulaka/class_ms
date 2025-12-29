@@ -31,4 +31,19 @@ public class JwtUtil {
             throw e;
         }
     }
+
+    public Integer extractStudentId(String authHeader) {
+        try {
+            String token = authHeader.replace("Bearer ", "");
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            return Integer.valueOf(claims.getSubject());
+        } catch (Exception e) {
+            System.out.println("JWT parsing failed: " + e.getMessage());
+            throw e;
+        }
+    }
 }

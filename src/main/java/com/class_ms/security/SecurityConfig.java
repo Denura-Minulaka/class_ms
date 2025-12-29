@@ -23,6 +23,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/classes/list", "/api/classes/{id}").permitAll()
                         .requestMatchers("/api/classes/**").authenticated()
                         .requestMatchers("/api/schedules/**").authenticated()
+                        .requestMatchers("/api/ratings/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
