@@ -6,11 +6,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ClassRepository extends JpaRepository<Class, Integer> {
 
     Optional<Class> findByIdAndTeacherId(Integer id, Integer teacherId);
+
+    List<Class> findByTeacherId(Integer teacherId);
 
     @Query("SELECT c FROM Class c WHERE " +
         "(:district IS NULL OR c.district = district) AND " +

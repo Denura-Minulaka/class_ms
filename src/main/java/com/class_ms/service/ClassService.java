@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 public class ClassService {
 
@@ -64,5 +66,9 @@ public class ClassService {
     public Page<Class> listClasses(String district, String town, String grade, String subject, String keyword, int page, int size, String sortBy) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return classRepo.filterSearch(district, town, grade, subject, keyword, pageable);
+    }
+
+    public List<Class> getClassesByTeacher(Integer teacherId) {
+        return classRepo.findByTeacherId(teacherId);
     }
 }

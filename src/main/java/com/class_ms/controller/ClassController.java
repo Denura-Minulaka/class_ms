@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -68,6 +69,17 @@ public class ClassController {
     ) {
         return ResponseEntity.ok(
                 classService.listClasses(district, town, grade, subject, keyword, page, size, sortBy)
+                        .stream()
+                        .map(this::mapToResponse)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("/my-classes")
+    public ResponseEntity<List<ClassResponse>> getClassesByTeacher(@RequestHeader("Authorization") String authHeader) {
+        Integer teacherId = jwtUtil.extractTeacherId(authHeader);
+        return ResponseEntity.ok(
+                classService.getClassesByTeacher(teacherId)
                         .stream()
                         .map(this::mapToResponse)
                         .collect(Collectors.toList())
