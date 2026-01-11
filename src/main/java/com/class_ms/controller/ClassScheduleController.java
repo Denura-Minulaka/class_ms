@@ -44,6 +44,11 @@ public class ClassScheduleController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ClassScheduleResponse> getSchedule(@PathVariable Integer id) {
+        return ResponseEntity.ok(mapToResponse(scheduleService.getScheduleById(id)));
+    }
+
     private ClassScheduleResponse mapToResponse(ClassSchedule s) {
         ClassScheduleResponse r = new ClassScheduleResponse();
         r.setId(s.getId());

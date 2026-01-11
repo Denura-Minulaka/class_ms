@@ -45,4 +45,9 @@ public class ClassScheduleService {
     public List<ClassSchedule> listSchedules(Integer classId) {
         return scheduleRepo.findByClassId(classId);
     }
+
+    public ClassSchedule getScheduleById(Integer id) {
+        return scheduleRepo.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found"));
+    }
 }
