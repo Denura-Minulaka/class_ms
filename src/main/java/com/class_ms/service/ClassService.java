@@ -71,4 +71,8 @@ public class ClassService {
     public List<Class> getClassesByTeacher(Integer teacherId) {
         return classRepo.findByTeacherId(teacherId);
     }
+
+    public List<Class> getAllClassesForStudents() {
+        return classRepo.findAll();
+    }
 }

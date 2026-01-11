@@ -86,6 +86,15 @@ public class ClassController {
         );
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<ClassResponse>> getAllClasses() {
+        List<Class> classes = classService.getAllClassesForStudents();
+        List<ClassResponse> response = classes.stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(response);
+    }
+
     private ClassResponse mapToResponse(Class c) {
         ClassResponse r = new ClassResponse();
         r.setId(c.getId());
