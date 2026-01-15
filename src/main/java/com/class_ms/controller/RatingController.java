@@ -58,10 +58,23 @@ public class RatingController {
             Class c = classService.getClassById(classId);
 
             // Apply filters
-            if (district != null && !district.equals(c.getDistrict())) continue;
-            if (town != null && !town.equals(c.getTown())) continue;
-            if (grade != null && !grade.equals(c.getGrade())) continue;
-            if (subject != null && !subject.equals(c.getSubject())) continue;
+            if (c == null) continue;
+
+            if (district != null && !district.isBlank()) {
+                if (c.getDistrict() == null || !c.getDistrict().toLowerCase().contains(district.toLowerCase())) continue;
+            }
+
+            if (town!= null && !town.isBlank()) {
+                if (c.getTown() == null || !c.getTown().toLowerCase().contains(town.toLowerCase())) continue;
+            }
+
+            if (grade != null && !grade.isBlank()) {
+                if (c.getGrade() == null || !c.getGrade().toLowerCase().contains(grade.toLowerCase())) continue;
+            }
+
+            if (subject != null && !subject.isBlank()) {
+                if (c.getSubject() == null || !c.getSubject().toLowerCase().contains(subject.toLowerCase())) continue;
+            }
 
             Object[] ratingData = avgMap.get(classId);
 
