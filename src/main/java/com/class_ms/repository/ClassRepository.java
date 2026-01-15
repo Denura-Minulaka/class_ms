@@ -16,10 +16,10 @@ public interface ClassRepository extends JpaRepository<Class, Integer> {
     List<Class> findByTeacherId(Integer teacherId);
 
     @Query("SELECT c FROM Class c WHERE " +
-        "(:district IS NULL OR c.district = district) AND " +
-        "(:town IS NULL OR c.town = town) AND " +
-        "(:grade IS NULL OR c.grade = grade) AND " +
-        "(:subject IS NULL OR c.subject = subject) AND " +
+        "(:district IS NULL OR c.district LIKE %:district%) AND " +
+        "(:town IS NULL OR c.town LIKE %:town%) AND " +
+        "(:grade IS NULL OR c.grade LIKE %:grade%) AND " +
+        "(:subject IS NULL OR c.subject LIKE %:subject%) AND " +
         "(:keyword IS NULL OR c.className LIKE %:keyword% OR c.description LIKE %:keyword% OR c.subject LIKE %:keyword%)")
     Page<Class> filterSearch(String district, String town, String grade, String subject, String keyword, Pageable pageable);
 }
